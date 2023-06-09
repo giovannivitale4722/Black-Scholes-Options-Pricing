@@ -36,7 +36,14 @@ var RFIT = parseFloat(document.getElementById("RFIT").value);
 var VY = parseFloat(document.getElementById("VY").value);
 var DY = parseFloat(document.getElementById(")DY").value); 
 
-  //calculating d1 and d2
+   //calculating d1 and d2
+var d1Numerator = ((Math.log(UAP/strikePrice)) + (RFIT + ((VY**2)/2)));
+var d1Denominator = (VY * Math.sqrt(VY)); 
+
+var d2 = d1 - (VY * Math.sqrt(EXP));
+
+  //calculating call and option prices
+
 
 </script>
 
