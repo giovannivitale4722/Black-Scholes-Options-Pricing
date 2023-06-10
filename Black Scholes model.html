@@ -4,28 +4,30 @@
   <title>Equation Solver</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body>
+<body> 
   <h1>Black-Scholes Options Pricing Calculator</h1>
   
- <form id="equationForm">
+  <form id="equationForm">
     <label for="UAP">Underlying Asset Price:</label>
     <input type="number" id="UAP">
   <br>
-    <label for="EXP">Time until Expiration (in years) :</label>
+    <label for="EXP">Time until Expiration (in years):</label>
     <input type="number" id="EXP">
   <br> 
-    <label for="Strike Price">Strike Price </label>
+    <label for="Strike Price">Strike Price:</label>
     <input type="number" id="Strike Price">
   <br>
-    <label for="RFIT">Risk-Free Interest Rate </label>
+    <label for="RFIT">Risk-Free Interest Rate:</label>
     <input type="number" id="RFIT">   
   <br>
-    <label for="VY">Volatility Yield</label>
+    <label for="VY">Volatility Yield:</label>
     <input type="number" id="VY">
   <br>
-    <label for="DY">Dividend Yield</label>
+    <label for="DY">Dividend Yield:</label>
     <input type="number" id="DY">
-      <button type="button" onclick="calculateOptionPrice()">Calculate</button>
+    
+    <button type="button" onclick="calculateOptionPrice()">Calculate</button>
+
 
 <script>
    // taking user input
@@ -48,4 +50,5 @@ var d2 = d1 - (VY * Math.sqrt(EXP));
 
 
 </script>
+
 
