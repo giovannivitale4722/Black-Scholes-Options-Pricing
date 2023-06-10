@@ -31,18 +31,20 @@
    // taking user input
 var UAP = parseFloat(document.getElementById("UAP").value);
 var EXP = parseFloat(document.getElementById("EXP").value);
-var Strike,Price = parseFloat(docuement.getElementById("Stirke,Price").value);
+var strikePrice = parseFloat(document.getElementById("Strike Price").value);
 var RFIT = parseFloat(document.getElementById("RFIT").value);
 var VY = parseFloat(document.getElementById("VY").value);
-var DY = parseFloat(document.getElementById(")DY").value); 
+var DY = parseFloat(document.getElementById("DY").value); 
 
-   //calculating d1 and d2
+  //calculating d1 and d2
 var d1Numerator = ((Math.log(UAP/strikePrice)) + (RFIT + ((VY**2)/2)));
 var d1Denominator = (VY * Math.sqrt(VY)); 
 
 var d2 = d1 - (VY * Math.sqrt(EXP));
 
   //calculating call and option prices
+
+
 
 
 </script>
