@@ -6,27 +6,39 @@
 </head>
 <body> 
   <h1>Black-Scholes Options Pricing Calculator</h1>
-  
   <form id="equationForm">
-    <label for="UAP">Underlying Asset Price:</label>
-    <input type="number" id="UAP">
-  <br>
-    <label for="EXP">Time until Expiration (in years):</label>
-    <input type="number" id="EXP">
-  <br> 
-    <label for="Strike Price">Strike Price:</label>
-    <input type="number" id="Strike Price">
-  <br>
-    <label for="RFIT">Risk-Free Interest Rate:</label>
-    <input type="number" id="RFIT">   
-  <br>
-    <label for="VY">Volatility Yield:</label>
-    <input type="number" id="VY">
-  <br>
-    <label for="DY">Dividend Yield:</label>
-    <input type="number" id="DY">
+    <table>
+      <tr>
+        <td><label for="UAP">Underlying Asset Price:</label></td>
+        <td><input type="number" id="UAP" step="0.01"></td>
+      </tr>
+      <tr>
+        <td><label for="EXP">Time (in years):</label></td>
+        <td><input type="number" id="EXP" step="0.01"></td>
+      </tr>
+      <tr>
+        <td><label for="Strike Price">Strike Price:</label></td>
+        <td><input type="number" id="Strike Price" step="0.01"></td>
+      </tr>
+      <tr>
+        <td><label for="RFIT">Risk-Free Interest Rate:</label></td>
+        <td><input type="number" id="RFIT" step="0.01"></td>
+      </tr>
+      <tr>
+        <td><label for="VY">Volatility Yield:</label></td>
+        <td><input type="number" id="VY" step="0.01" ></td>
+      </tr>
+      <tr>
+        <td><label for="DY">Dividend Yield:</label></td>
+        <td><input type="number" id="DY"step="0.01" ></td>
+      </tr>
+    </table>
     
+    <br>
     <button type="button" onclick="calculateOptionPrice()">Calculate</button>
+  </form>
+
+  
 
 
 <script>
@@ -41,6 +53,7 @@ var DY = parseFloat(document.getElementById("DY").value);
   //calculating d1 and d2
 var d1Numerator = ((Math.log(UAP/strikePrice)) + (RFIT + ((VY**2)/2)));
 var d1Denominator = (VY * Math.sqrt(VY)); 
+var d1= d1Numerator/d1Denominator
 
 var d2 = d1 - (VY * Math.sqrt(EXP));
 
@@ -50,5 +63,4 @@ var d2 = d1 - (VY * Math.sqrt(EXP));
 
 
 </script>
-
 
