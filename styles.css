@@ -3,19 +3,37 @@ body {
 }
 
 h1 {
-  text-align: center;
+  text-align: left;
+  text-decoration: underline;
 }
 
+p1 {
+
+  text-align: right;
+
+
+}
+
+
 form {
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
 }
 
 button {
-  margin-top: 10px;
+  width: 80px;
+  height: 25px;
+  margin-top: 2px;
+  font-size: 15px;
+  color:blueviolet
 }
 
 #result {
   text-align: center;
   margin-top: 20px;
+}
+
+input {padding: 2px;
+
+
 }
