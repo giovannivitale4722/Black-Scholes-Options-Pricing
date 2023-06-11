@@ -28,39 +28,49 @@
         <td><label for="VY">Volatility Yield:</label></td>
         <td><input type="number" id="VY" step="0.01" ></td>
       </tr>
+      <td><label for="DY">Dividend Yield:</label></td>
+      <td><input type="number" id="DY" step="0.01" ></td>
       <tr>
-        <td><label for="DY">Dividend Yield:</label></td>
-        <td><input type="number" id="DY"step="0.01" ></td>
-      </tr>
+
     </table>
     
     <br>
+    <p id="callResult"></p>
+
     <button type="button" onclick="calculateOptionPrice()">Calculate</button>
+    
   </form>
-
-  
-
-
+  <p id="callResult"></p>
+  <script src="//cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
 <script>
+
+function calculateOptionPrice() {
    // taking user input
 var UAP = parseFloat(document.getElementById("UAP").value);
 var EXP = parseFloat(document.getElementById("EXP").value);
 var strikePrice = parseFloat(document.getElementById("Strike Price").value);
 var RFIT = parseFloat(document.getElementById("RFIT").value);
 var VY = parseFloat(document.getElementById("VY").value);
-var DY = parseFloat(document.getElementById("DY").value); 
+var DY= parseFloat(document.getElementById("DY").value);
+
 
   //calculating d1 and d2
-var d1Numerator = ((Math.log(UAP/strikePrice)) + (RFIT + ((VY**2)/2)));
-var d1Denominator = (VY * Math.sqrt(VY)); 
-var d1= d1Numerator/d1Denominator
+var d1Numerator = ((Math.log(UAP/strikePrice)) + (RFIT - DY + ((VY**2)/2))) * (EXP);
+var d1Denominator = (VY * Math.sqrt(EXP)); 
+var d1= d1Numerator/d1Denominator;
 
 var d2 = d1 - (VY * Math.sqrt(EXP));
 
-  //calculating call and option prices
+  // Calculating N(d1) and N(d2)
 
 
+  var d1
+var Nd1= jStat.normal.cdf(d1, 0, 1);
+var Nd2= jStat.normal.cdf(d2, 0, 1);
 
+var call = (Nd1 * UAP) - (Nd2 * strikePrice * (Math.exp(-RFIT * EXP)));
 
+var callResultElement = document.getElementById("callResult");
+  callResultElement.textContent = "Call Result: " + call;
+}
 </script>
-
