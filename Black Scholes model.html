@@ -35,12 +35,12 @@
     </table>
     
     <br>
-    <p id="callResult"></p>
-
+<p id="callResult"></p>
+<p id="putResult"></p>
     <button type="button" onclick="calculateOptionPrice()">Calculate</button>
     
   </form>
-  <p id="callResult"></p>
+
   <script src="//cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
 <script>
 
@@ -69,8 +69,15 @@ var Nd1= jStat.normal.cdf(d1, 0, 1);
 var Nd2= jStat.normal.cdf(d2, 0, 1);
 
 var call = (Nd1 * UAP) - (Nd2 * strikePrice * (Math.exp(-RFIT * EXP)));
+var put = ((strikePrice * (Math.exp(-RFIT * EXP))) * (-Nd2)) - (UAP * (-Nd1));
 
 var callResultElement = document.getElementById("callResult");
   callResultElement.textContent = "Call Result: " + call;
+
+var putResultElement = document.getElementById("putResult");
+  putResultElement.textContent = "Put Result: " + put;
 }
 </script>
+
+
+
