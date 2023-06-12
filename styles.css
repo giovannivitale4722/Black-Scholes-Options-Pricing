@@ -35,5 +35,22 @@ button {
 
 input {padding: 2px;
 
-
 }
+
+  .tab-container {
+    
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .tab {
+    display: flex;
+  }
+  
+  .tab button {
+    margin-left: 5px;
+    width: 100px;
+  }
