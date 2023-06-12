@@ -7,7 +7,17 @@
 </head>
 <body> 
   <h1>Black-Scholes Options Pricing Calculator</h1>
-
+  <div class="tab-container">
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'Page1')">General</button>
+      <button class="tablinks" onclick="openTab(event, 'Page2')">Assumptions</button>
+      <button class="tablinks" onclick="openTab(event, 'Page3')">Derivation</button>
+    </div>
+    <div id="Page1" class="tabcontent">
+      
+     
+    </div>
+  </div>
   <form id="equationForm">
     <table>
       <tr>
@@ -94,6 +104,16 @@ var putResultElement = document.getElementById("putResult");
   putResultElement.textContent = "Put Result: " + put;
 }
 </script>
+
+<script>
+function openTab(event, Page1) {
+
+  window.location.href = Page1 + "General.html";
+
+}
+</script>
+
+
 
 
 
