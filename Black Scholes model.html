@@ -3,13 +3,15 @@
 <head>
   <title>Equation Solver</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
 <body> 
   <h1>Black-Scholes Options Pricing Calculator</h1>
+
   <form id="equationForm">
     <table>
       <tr>
-        <td><label for="UAP">Underlying Asset Price:</label></td>
+        <td><label for="UAP">Underlying Assist Price:</label></td>
         <td><input type="number" id="UAP" step="0.01"></td>
       </tr>
       <tr>
@@ -30,13 +32,24 @@
       </tr>
       <td><label for="DY">Dividend Yield:</label></td>
       <td><input type="number" id="DY" step="0.01" ></td>
-      <tr>
+    </tr>
+    <tr>
 
     </table>
     
-    <br>
+    
 <p id="callResult"></p>
 <p id="putResult"></p>
+
+<style>
+  #callResult {
+    color: green;
+  }
+
+  #putResult {
+    color: red;
+  }
+</style>
     <button type="button" onclick="calculateOptionPrice()">Calculate</button>
     
   </form>
@@ -54,22 +67,25 @@ var VY = parseFloat(document.getElementById("VY").value);
 var DY= parseFloat(document.getElementById("DY").value);
 
 
-  //calculating d1 and d2
+  //Calculating d1 and d2
 var d1Numerator = ((Math.log(UAP/strikePrice)) + (RFIT - DY + ((VY**2)/2))) * (EXP);
 var d1Denominator = (VY * Math.sqrt(EXP)); 
-var d1= d1Numerator/d1Denominator;
+var d1 = d1Numerator/d1Denominator;
 
 var d2 = d1 - (VY * Math.sqrt(EXP));
 
   // Calculating N(d1) and N(d2)
+ 
+var Nd1 = jStat.normal.cdf(d1, 0, 1);
+var Nd2 = jStat.normal.cdf(d2, 0, 1);
 
+  // Calculating N(-d1) and N(-d2)
+var NNd1 = jStat.normal.cdf(-d1, 0, 1);
+var NNd2 = jStat.normal.cdf(-d2, 0, 1);
 
-  var d1
-var Nd1= jStat.normal.cdf(d1, 0, 1);
-var Nd2= jStat.normal.cdf(d2, 0, 1);
-
+  //Calculating Call and Put prices
 var call = (Nd1 * UAP) - (Nd2 * strikePrice * (Math.exp(-RFIT * EXP)));
-var put = ((strikePrice * (Math.exp(-RFIT * EXP))) * (-Nd2)) - (UAP * (-Nd1));
+var put = ((strikePrice * (Math.exp(-RFIT * EXP))) * (NNd2)) - (UAP * (NNd1));
 
 var callResultElement = document.getElementById("callResult");
   callResultElement.textContent = "Call Result: " + call;
@@ -78,6 +94,7 @@ var putResultElement = document.getElementById("putResult");
   putResultElement.textContent = "Put Result: " + put;
 }
 </script>
+
 
 
 
